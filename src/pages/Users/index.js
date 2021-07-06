@@ -1,6 +1,6 @@
 import { useHistory } from "react-router"
 import useProtectPage from "../../hooks/useProtectPage"
-import {  goToDashboard, goToEditInfo, goToEditPassword, goBack } from "../../routes/coordinator"
+import { goToDashboard, goToEditInfo, goToEditPassword, goBack } from "../../routes/coordinator"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { baseUrl } from "../../parameters"
@@ -15,6 +15,11 @@ function Users() {
 
     useEffect( async () => {
 
+        await getUsers()
+    })
+
+    const getUsers = async () => {
+
         try {
 
             const headers =  { headers: { Authorization: localStorage.getItem("token") } }
@@ -27,7 +32,7 @@ function Users() {
 
             goToDashboard(history)
         }
-    })
+    }
 
     const deleteUser = async (userId) => {
 

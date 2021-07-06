@@ -16,6 +16,11 @@ function Profile() {
 
     useEffect( async () => {
 
+        await getUser()
+    }, [])
+
+    const getUser = async () => {
+
         try {
 
             const token = localStorage.getItem("token")
@@ -30,7 +35,7 @@ function Profile() {
 
             goBack(history)
         }
-    }, [])
+    }
 
     const deleteUser = async () => {
 

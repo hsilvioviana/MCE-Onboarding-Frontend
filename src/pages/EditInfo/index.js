@@ -24,6 +24,11 @@ function EditInfo() {
 
     useEffect( async () => {
 
+        await getInfo()
+    }, [])
+
+    const getInfo = async () => {
+
         try {
 
             const headers =  { headers: { Authorization: localStorage.getItem("token") } }
@@ -38,7 +43,7 @@ function EditInfo() {
 
             goBack(history)
         }
-    }, [])
+    }
 
     const editInfo = async (event) => {
 
