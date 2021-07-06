@@ -36,8 +36,7 @@ function EditInfo() {
         }
         catch (error) {
 
-            window.alert(error.response.data.error)
-            goToLogout(history)
+            goBack(history)
         }
     }, [])
 

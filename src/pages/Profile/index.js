@@ -28,10 +28,28 @@ function Profile() {
         }
         catch (error) {
 
-            window.alert(error.response.data.error)
-            goToLogout(history)
+            goBack(history)
         }
     }, [])
+
+    const deleteUser = async () => {
+
+        try {
+
+            const headers =  { headers: { Authorization: localStorage.getItem("token") } }
+
+            if (window.confirm("Você tem certeza que quer apagar sua conta?")) {
+                
+                await axios.delete(`${baseUrl}/users/delete/${id}`, headers)
+                window.alert("Conta apagada com sucesso!")
+                goToLogout(history)
+            }
+        }
+        catch(error) {
+
+            window.alert(error.response.data.error)
+        }
+    }
 
     return (
         <div>
@@ -44,6 +62,7 @@ function Profile() {
 
             <button onClick={() => goToEditInfo(history, user.id)}>Editar Informações</button>
             <button onClick={() => goToEditPassword(history, user.id)}>Editar Senha</button>
+            <button onClick={deleteUser}>Apagar Conta</button>
             <button onClick={() => goBack(history)}>Voltar</button>
         </div>
     )

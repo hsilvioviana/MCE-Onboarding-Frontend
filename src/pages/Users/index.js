@@ -38,9 +38,8 @@ function Users() {
             if (window.confirm("Você tem certeza que quer apagar esse usuário?")) {
                 
                 await axios.delete(`${baseUrl}/users/delete/${userId}`, headers)
+                window.alert("Usuário apagado com sucesso!")
             }
-
-            window.alert("Usuário apagado com sucesso!")
         }
         catch(error) {
 
