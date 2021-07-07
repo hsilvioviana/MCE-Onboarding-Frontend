@@ -3,8 +3,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 import Profile from './pages/Profile'
-import EditInfo from './pages/EditInfo'
-import EditPassword from './pages/EditPassword'
+import EditProfile from './pages/EditProfile'
 import Users from './pages/Users'
 import ResetPassword from './pages/ResetPassword'
 import ChangePasswordWithCode from './pages/ChangePasswordWithCode'
@@ -32,7 +31,6 @@ export default function App() {
       <ChangePasswordWithCode/>
     </Route>
 
-
     <Route exact path="/">
       <Dashboard/>
     </Route>
@@ -45,12 +43,8 @@ export default function App() {
       <Profile/>
     </Route>
 
-    <Route exact path="/profile/edit/info/:id">
-      <EditInfo/>
-    </Route>
-
-    <Route exact path="/profile/edit/password/:id">
-      <EditPassword/>
+    <Route exact path="/profile/edit/:id">
+      <EditProfile/>
     </Route>
 
     <Route>

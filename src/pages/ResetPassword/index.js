@@ -3,7 +3,10 @@ import { useState } from "react"
 import { useHistory } from "react-router"
 import useUnprotectPage from "../../hooks/useUnprotectPage"
 import { baseUrl } from "../../parameters"
-import { goBack, goToChangePasswordWithCode } from "../../routes/coordinator"
+import { goToChangePasswordWithCode } from "../../routes/coordinator"
+import { Container, Body, Forms } from "./styled"
+import Button from "../../components/Button";
+import Input from "../../components/Input";
 
 function ResetPassword() {
 
@@ -37,14 +40,17 @@ function ResetPassword() {
     }
 
     return (
-        <div>
-            <h1>ResetPassword</h1>
-            <form>
-                <input onChange={onChange} placeholder="Email" name="email" value={form.email}/>
-                <button onClick={resetPassword}>Enviar Código de Recuperação para Email</button>
-            </form>
-            <button onClick={() => goBack(history)}>Voltar</button>
-        </div>
+        <Container>
+            <Body>
+                <h1>Esqueci Minha Senha</h1>
+                <Forms>
+                    <Input onChange={onChange} placeholder="Email" name="email" value={form.email}/>
+                    <Button onClick={resetPassword}>Enviar Código de Recuperação para Email</Button>
+                </Forms>
+                <br/>
+                <a href="/login">Voltar para Login</a>
+            </Body>
+        </Container>
     )
 }
 

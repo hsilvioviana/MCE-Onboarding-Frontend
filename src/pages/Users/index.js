@@ -1,9 +1,12 @@
 import { useHistory } from "react-router"
 import useProtectPage from "../../hooks/useProtectPage"
-import { goToDashboard, goToEditInfo, goToEditPassword, goBack } from "../../routes/coordinator"
+import { goToDashboard, goToEditProfile, goBack } from "../../routes/coordinator"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { baseUrl } from "../../parameters"
+import { Container, Body, Forms, User } from "./styled"
+import Button from "../../components/Button";
+import Input from "../../components/Input";
 
 
 function Users() {
@@ -53,23 +56,27 @@ function Users() {
     }
 
     return (
-        <div>
+        <Container>
+            <Body>
+
             <h1>Users</h1>
+            <a href="/">Voltar</a>
+
+            <div>
             {users && users.map(user => {
                 return (
-                <div>
-                    <hr/>
-                    <h3>{user.name}</h3>
-                    <h3>{user.nickname}</h3>
-                    <h3>{user.email}</h3>
-                    <h3>{user.cpf}</h3>
-                    <button onClick={() => goToEditInfo(history, user.id)}>Editar Informações</button>
-                    <button onClick={() => goToEditPassword(history, user.id)}>Editar Senha</button>
-                    <button onClick={() => deleteUser(user.id)}>Apagar</button>
-                </div>)
+                <User>
+                    <h3>Nome: {user.name}</h3>
+                    <h3>Apelido: {user.nickname}</h3>
+                    <h3>Email: {user.email}</h3>
+                    <h3>Cpf: {user.cpf}</h3>
+                    <Button onClick={() => goToEditProfile(history, user.id)}>Editar Informações</Button>
+                    <Button onClick={() => deleteUser(user.id)}>Apagar</Button>
+                </User>)
             })}
-            <button onClick={() => goBack(history)}>Voltar</button>
-        </div>
+            </div>
+            </Body>
+        </Container>
     )
 }
 

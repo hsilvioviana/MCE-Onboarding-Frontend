@@ -3,7 +3,10 @@ import { useState } from "react"
 import { useHistory } from "react-router"
 import useUnprotectPage from "../../hooks/useUnprotectPage"
 import { baseUrl } from "../../parameters"
-import { goToDashboard, goToResetPassoword, goToSignup } from "../../routes/coordinator"
+import { goToDashboard } from "../../routes/coordinator"
+import { Container, Body, Forms } from "./styled"
+import Button from "../../components/Button";
+import Input from "../../components/Input";
 
 function Login() {
 
@@ -19,6 +22,7 @@ function Login() {
 
         const {name, value} = event.target
         setForm({...form, [name]: value})
+        console.log(form)
     }
 
     const login = async (event) => {
@@ -39,16 +43,18 @@ function Login() {
     }
 
     return (
-        <div>
+        <Container>
+            <Body>
             <h1>Login</h1>
-            <form>
-                <input onChange={onChange} placeholder="Email" name="email" value={form.email}/>
-                <input onChange={onChange} placeholder="Senha" name="password" value={form.password} type="password"/>
-                <button onClick={login}>Entrar</button>
-            </form>
-            <button onClick={() => goToSignup(history)}>Cadastro</button>
-            <button onClick={() => goToResetPassoword(history)}>Esqueci Minha Senha</button>
-        </div>
+            <Forms>
+                <Input onChange={onChange} placeholder="Email" name="email" value={form.email}/>
+                <Input onChange={onChange} placeholder="Senha" name="password" value={form.password} type="password"/>
+                <Button onClick={login}>Entrar</Button>
+            </Forms>
+            <p>Não possui uma conta ? <a href="/signup">Cadastre-se</a></p>
+            <a href="/password/reset">Esqueci Minha Senha</a>
+            </Body>
+        </Container>
     )
 }
 

@@ -3,7 +3,10 @@ import { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
 import useProtectPage from "../../hooks/useProtectPage"
 import { baseUrl } from "../../parameters"
-import { goBack, goToEditInfo, goToEditPassword, goToLogout } from "../../routes/coordinator"
+import { goBack, goToDashboard, goToEditProfile, goToLogout } from "../../routes/coordinator"
+import { Container, Body, Forms } from "./styled"
+import Button from "../../components/Button";
+
 
 function Profile() {
 
@@ -49,6 +52,8 @@ function Profile() {
                 window.alert("Conta apagada com sucesso!")
                 goToLogout(history)
             }
+
+            goToDashboard(history)
         }
         catch(error) {
 
@@ -57,19 +62,26 @@ function Profile() {
     }
 
     return (
-        <div>
-            <h1>Profile</h1>
+        <Container>
+            <Body>
+            <h1>Perfil</h1>
 
-            <h1>{user.name}</h1>
-            <h1>{user.nickname}</h1>
-            <h1>{user.email}</h1>
-            <h1>{user.cpf}</h1>
+            <h3>Nome: {user.name}</h3>
+            <h3>Apelido: {user.nickname}</h3>
+            <h3>Email: {user.email}</h3>
+            <h3>Cpf: {user.cpf}</h3>
 
-            <button onClick={() => goToEditInfo(history, user.id)}>Editar Informações</button>
-            <button onClick={() => goToEditPassword(history, user.id)}>Editar Senha</button>
-            <button onClick={deleteUser}>Apagar Conta</button>
-            <button onClick={() => goBack(history)}>Voltar</button>
-        </div>
+            <Forms onSubmit={""}>
+
+                <Button onClick={() => goToEditProfile(history, user.id)}>Editar Perfil</Button>
+                <Button onClick={deleteUser}>Apagar Conta</Button>
+
+            </Forms>
+            
+            <br/>
+            <a href="/">Voltar</a>
+            </Body>
+        </Container>
     )
 }
 

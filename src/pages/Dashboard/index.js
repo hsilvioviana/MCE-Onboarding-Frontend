@@ -3,6 +3,9 @@ import useProtectPage from "../../hooks/useProtectPage"
 import { goToProfile, goToLogout, goToUsers } from "../../routes/coordinator"
 import { useEffect, useState } from "react"
 import jwt_decode from "jwt-decode"
+import { Container, Body, Forms } from "./styled"
+import Button from "../../components/Button";
+import Input from "../../components/Input";
 
 
 function Dashboard() {
@@ -32,12 +35,20 @@ function Dashboard() {
     }
 
     return (
-        <div>
+        <Container>
+            <Body>
+                
             <h1>Dashboard</h1>
-            {admin && <button onClick={() => goToUsers(history)}>Usuários</button>}
-            <button onClick={() => goToProfile(history, userId)}>Perfil</button>
-            <button onClick={() => goToLogout(history)}>Logout</button>
-        </div>
+
+            <Forms onSubmit={""}>
+
+                {admin && <Button onClick={() => goToUsers(history)}>Usuários</Button>}
+                <Button onClick={() => goToProfile(history, userId)}>Perfil</Button>
+                <Button onClick={() => goToLogout(history)}>Logout</Button>
+
+            </Forms>
+            </Body>
+        </Container>
     )
 }
 

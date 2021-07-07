@@ -3,7 +3,10 @@ import { useState } from "react"
 import { useHistory, useParams } from "react-router"
 import useUnprotectPage from "../../hooks/useUnprotectPage"
 import { baseUrl } from "../../parameters"
-import { goToDashboard, goToLogin } from "../../routes/coordinator"
+import { goToDashboard } from "../../routes/coordinator"
+import { Container, Body, Forms } from "./styled"
+import Button from "../../components/Button";
+import Input from "../../components/Input";
 
 function ChangePasswordWithCode() {
 
@@ -40,15 +43,18 @@ function ChangePasswordWithCode() {
     }
 
     return (
-        <div>
-            <h1>ChangePasswordWithCode</h1>
-            <form>
-                <input onChange={onChange} placeholder="Código" name="code" value={form.code}/>
-                <input onChange={onChange} placeholder="Nova Senha" name="newPassword" value={form.newPassword} type="password"/>
-                <button onClick={useCode}>Mudar Senha</button>
-            </form>
-            <button onClick={() => goToLogin(history)}>Voltar para Login</button>
-        </div>
+        <Container>
+            <Body>
+            <h1>Nova Senha</h1>
+                <Forms>
+                    <Input onChange={onChange} placeholder="Código" name="code" value={form.code}/>
+                    <Input onChange={onChange} placeholder="Nova Senha" name="newPassword" value={form.newPassword} type="password"/>
+                    <Button onClick={useCode}>Mudar Senha</Button>
+                </Forms>
+                <br/>
+                <a href="/login">Voltar para Login</a>
+            </Body>
+        </Container>
     )
 }
 

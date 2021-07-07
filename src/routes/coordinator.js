@@ -33,14 +33,9 @@ export const goToProfile = (history, id) => {
     history.push(`/profile/${id}`)
 }
 
-export const goToEditInfo = (history, id) => {
+export const goToEditProfile = (history, id) => {
 
-    history.push(`/profile/edit/info/${id}`)
-}
-
-export const goToEditPassword = (history, id) => {
-
-    history.push(`/profile/edit/password/${id}`)
+    history.push(`/profile/edit/${id}`)
 }
 
 export const goToLogout = (history) => {

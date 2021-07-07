@@ -1,7 +1,7 @@
+import { Form } from "@unform/web";
 import styled from "styled-components";
 import Background from "../../assets/background.png";
 import colors from "../../styles/colors";
-import { Form } from "@unform/web";
 import fonts from "../../styles/fonts";
 
 export const Container = styled.div`
@@ -39,15 +39,32 @@ export const Body = styled.div`
     margin: 0px 55px;
   }
   > div {
-    display: flex;
     color: ${colors.blue};
     ${fonts[400]};
     margin: 20px 65px;
     font-weight: 400;
     > a {
-      margin-left: 10px;
+      margin-left: 5px;
       color: blue;
     }
+  }
+  overflow: auto;
+  -ms-overflow-style: none;
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 30px !important;
+    margin-right: 70px !important;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+    border-radius: 30px !important;
+    margin-right: 30px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 30px !important;
+    margin-right: 30px !important;
   }
 `;
 
@@ -55,7 +72,6 @@ export const Forms = styled(Form)`
   display: flex;
   width: 70%;
   flex-direction: column;
-  margin-top: 50px;
   align-self: center;
   span {
     margin-top: 20px;
@@ -63,4 +79,12 @@ export const Forms = styled(Form)`
     color: ${colors.blue};
     ${fonts[400]};
   }
+`;
+
+export const User = styled.div`
+  color: black;
+  border: 2px solid black;
+  border-radius: 30px;
+  margin: 10px;
+  padding: 20px;
 `;
